@@ -112,6 +112,10 @@ describe("formatTokenBalanceFull", () => {
     expect(formatTokenBalanceFull("1200010000000000000", 18)).toBe("1.2");
   });
 
+  it("drops the fraction when the cut leaves only zeros", () => {
+    expect(formatTokenBalanceFull("1000010000000000000", 18)).toBe("1");
+  });
+
   it("trims zeros exposed by the cut below 1", () => {
     // 0.0001200005 tokens → "0.00012"
     expect(formatTokenBalanceFull("120000500000000", 18)).toBe("0.00012");
